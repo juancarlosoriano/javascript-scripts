@@ -142,9 +142,28 @@ function* generateSecondaryColors(primaryColor) {
 
 const generateColor = generatePrimaryColors();
 
-generateColor.next(); // Outputs Light Red
-generateColor.next(); // Outputs Dark Red
-generateColor.next(); // Outputs Light Green
-generateColor.next(); // Outputs Dark Green
-generateColor.next(); // Outputs Light Blue
-generateColor.next(); // Outputs Dark Blue
+// generateColor.next(); // Outputs Light Red
+// generateColor.next(); // Outputs Dark Red
+// generateColor.next(); // Outputs Light Green
+// generateColor.next(); // Outputs Dark Green
+// generateColor.next(); // Outputs Light Blue
+// generateColor.next(); // Outputs Dark Blue
+
+// Yield* working with iterables
+
+function* sampleGenerator1() {
+  yield `This is a template literal`;
+  // yield * will work on every single element of an iterable
+  yield* "HELLO";
+  yield* [1, 2];
+}
+
+const sampleGen = sampleGenerator1();
+console.log(sampleGen.next()); // Outputs This is a template literal
+console.log(sampleGen.next()); // Outputs H
+console.log(sampleGen.next()); // Outputs E
+console.log(sampleGen.next()); // Outputs L
+console.log(sampleGen.next()); // Outputs L
+console.log(sampleGen.next()); // Outputs O
+console.log(sampleGen.next()); // Outputs 1
+console.log(sampleGen.next()); // Outputs 2

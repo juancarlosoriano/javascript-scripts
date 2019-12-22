@@ -102,6 +102,43 @@ class LinkedList {
 
     return deletedNode !== null;
   }
+
+  // Return a list of nodes in order from head to tail recursively
+  // Pass the head in the initial call
+  traverse(node) {
+    // Check if the current node is null as the base case
+    if (node === null) {
+      // Return empty array once the base case is hit
+      return [];
+    } else {
+      // For the recursive case, make a recursive call to get an array of
+      // values of the rest of the list, appended to the current node's value
+      return [node.value, ...this.traverse(node.next)];
+    }
+
+    /* Shorter form
+    return node === null ? [] : [node.value, ...this.traverse(node.next)];
+    */
+  }
+
+  // Return a reversed list of node in order from tail to head recursively
+  // Pass the head in the initial call
+  traverseReversed(node) {
+    // Check if the current node is null as the base case
+    if (node === null) {
+      // Return empty array once base case is hit
+      return [];
+    } else {
+      // For the recursive case, make a recursive call to get an array of
+      // values of the rest of the list in reverse order and append
+      // the current node's value
+      return [...this.traverseReversed(node.next), node.value];
+    }
+
+    /* Shorter form
+    return node === null ? [] : [...this.traverseReversed(node.next), node.value];
+    */
+  }
 }
 
 const linkedList = new LinkedList();
@@ -111,17 +148,22 @@ const linkedList = new LinkedList();
 linkedList.add(10);
 linkedList.add(3);
 linkedList.add(7);
+linkedList.add(8);
+linkedList.add(100);
+linkedList.add(56);
 // linkedList.add(3);
 // linkedList.add(2);
-console.log(linkedList.head.value);
-console.log(linkedList.head.next.value);
-console.log(linkedList.head.next.next.value);
-console.log(linkedList.head.next.next);
+// console.log(linkedList.head.value);
+// console.log(linkedList.head.next.value);
+// console.log(linkedList.head.next.next.value);
+// console.log(linkedList.head.next.next);
 // console.log(linkedList.search(3));
 // console.log(linkedList.search(10));
 // console.log(linkedList.search(2));
-console.log("Deleting...");
-console.log(linkedList.delete(2));
-console.log(linkedList.head.value);
-console.log(linkedList.head.next.value);
-console.log(linkedList.head.next.next);
+// console.log("Deleting...");
+// console.log(linkedList.delete(2));
+// console.log(linkedList.head.value);
+// console.log(linkedList.head.next.value);
+// console.log(linkedList.head.next.next);
+console.log(linkedList.traverse(linkedList.head));
+console.log(linkedList.traverseReversed(linkedList.head));

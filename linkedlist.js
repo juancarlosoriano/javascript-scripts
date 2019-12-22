@@ -94,6 +94,9 @@ class LinkedList {
 
         // Set current node's next to the next's next
         current.next = current.next.next;
+
+        // Decrement the node count
+        this.numberOfNodes--;
       } else {
         // Set current to current.next
         current = current.next;
